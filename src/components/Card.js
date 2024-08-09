@@ -1,13 +1,17 @@
 import React from 'react'
 
-const Card = () => {
+const Card = (props) => {
+  const options = props.options
+  const priceOptions = Object.keys(options)
+  //console.log(options)
+  //console.log(priceOptions)
   return (
     <div>
-    <div className="card mt-3" style={{"width": "18rem", "maxHeight":"360px"}}>
-    <img className="card-img-top" src="https://picsum.photos/100/50" alt="Card image cap"/>
+    <div className="card mt-3" style={{"width": "18rem", "maxHeight":"425px"}}>
+    <img className="card-img-top" style={{"width": "18rem", "minHeight":"200px"}} src={props.imgsrc} alt="Card image cap"/>
       <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">This is some important text.</p>
+        <h5 className="card-title">{props.foodName}</h5>
+        <p className="card-text">{props.desc}</p>
         <div className='container w-100'>
             <select className='m-2 h-100 bg-success rounded'>
               {
@@ -19,8 +23,13 @@ const Card = () => {
               }
             </select>
             <select className='m-2 h-100 bg-success rounded'>
-                    <option value="half">Half</option>
-                    <option value="Full">Full</option> 
+              {
+                priceOptions.map((data) => {
+                  return (
+                    <option key = {data} value = {data}> {data} </option>
+                  )
+                })
+              }
             </select>
             <div className='d-inline h-100 fs-5'>
                 Total Price

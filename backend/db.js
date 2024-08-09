@@ -7,9 +7,13 @@ const connectToMongo = async () => {
             useUnifiedTopology: true
         }) 
         console.log('Mongo connected')
-        const fetched_data = await mongoose.connection.db.collection("users")
+        const fetched_data = await mongoose.connection.db.collection("foodData")
         const data = await fetched_data.find({}).toArray();
-        console.log(data)
+        const food_category = await mongoose.connection.db.collection("foodCategory")
+        const foodData = await food_category.find({}).toArray();
+        global.food_items = data;
+        global.foodCategory = foodData;
+        console.log(foodData)
     }
     catch(error) {
         console.log(error)

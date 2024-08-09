@@ -1,4 +1,7 @@
 import React from 'react'
+import biryani from './images/biryani.jpg'
+import pizza from './images/pizza.jpg'
+import noodles from './images/noodles.jpg'
 
 const Carousel = () => {
     return (
@@ -12,13 +15,13 @@ const Carousel = () => {
                         </form>
                     </div>
                     <div className="carousel-item active">
-                        <img src="https://picsum.photos/700/900" className="d-block w-100" style={{filter : "brightness(30%)"}} alt="..."/>
+                        <img src={noodles} className="d-block w-100" style={{filter : "brightness(30%)"}} alt="..."/>
                     </div>
                     <div className="carousel-item">
-                        <img src="https://picsum.photos/702/900" className="d-block w-100" style={{filter : "brightness(30%)"}} alt="..."/>
+                        <img src={pizza} className="d-block w-100" style={{filter : "brightness(30%)"}} alt="..."/>
                     </div>
-                    <div className="carousel-item">
-                        <img src="https://picsum.photos/701/900" className="d-block w-100" style={{filter : "brightness(30%)"}} alt="..."/>
+                    <div className="carousel-item active">
+                        <img src={biryani} className="d-block w-100" style={{filter : "brightness(30%)"}} alt="..."/>
                     </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
