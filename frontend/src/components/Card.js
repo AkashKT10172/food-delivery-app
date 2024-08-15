@@ -1,19 +1,40 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useCart, useDispatchCart } from './ContextReducer.js'
 
 const Card = (props) => {
   const options = props.options
   const priceOptions = Object.keys(options)
-  //console.log(options)
-  //console.log(priceOptions)
+  const priceRef = useRef()
+  let dispatch = useDispatchCart()
+  let data = useCart()
+
+  const [qty, setQty] = useState(1)
+  const [size, setSize] = useState("")
+  const handleAddToCart = async () => {
+    await dispatch({type:"ADD", 
+      id:props.foodItem._id,
+      name : props.foodItem.name,
+      price : finalPrice,
+      qty : qty,
+      size : size,
+      img : props.foodItem.img
+    })
+    
+    console.log(data)
+  }
+  let finalPrice = qty * parseInt(options[size])
+  useEffect(() => {
+    setSize(priceRef.current.value)
+  }, [])
   return (
     <div>
-    <div className="card mt-3" style={{"width": "18rem", "maxHeight":"425px"}}>
-    <img className="card-img-top" style={{"width": "18rem", "height":"200px", objectFit: "fill"}} src={props.imgsrc} alt="Card image cap"/>
+    <div className="card mt-3" style={{"width": "18rem", "maxHeight":"500px"}}>
+    <img className="card-img-top" style={{"width": "18rem", "height":"200px", objectFit: "fill"}} src={props.foodItem.img} alt="Card image cap"/>
       <div className="card-body">
-        <h5 className="card-title">{props.foodName}</h5>
-        <p className="card-text">{props.desc}</p>
+        <h5 className="card-title">{props.foodItem.name}</h5>
+        <p className="card-text">{props.foodItem.description}</p>
         <div className='container w-100'>
-            <select className='m-2 h-100 bg-success rounded'>
+            <select className='m-2 h-100 bg-success rounded' onChange={(e) => setQty(e.target.value)}>
               {
                 Array.from(Array(9), (e,i) =>{
                   return(
@@ -22,7 +43,7 @@ const Card = (props) => {
                 })
               }
             </select>
-            <select className='m-2 h-100 bg-success rounded'>
+            <select className='m-2 h-100 bg-success rounded' ref = {priceRef} onChange={(e) => setSize(e.target.value)}>
               {
                 priceOptions.map((data) => {
                   return (
@@ -31,9 +52,14 @@ const Card = (props) => {
                 })
               }
             </select>
+
             <div className='d-inline h-100 fs-5'>
-                Total Price
+                Rs. {finalPrice}
             </div>
+            
+            <hr/>
+              <button className='btn btn-success justify-center ms-2' 
+                  onClick={handleAddToCart}>Add to Cart</button>
         </div>
       </div>
     </div>

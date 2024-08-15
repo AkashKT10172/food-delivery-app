@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
 
 const Signup = () => {
     const Navigate = useNavigate()
@@ -43,6 +45,7 @@ const Signup = () => {
     console.log(credentials)
   return (
     <>
+    <Navbar/>
     <div className="container">
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -105,6 +108,7 @@ const Signup = () => {
         <Link to="/login" className="m-3 btn btn-danger">Already a User</Link>
       </form>
     </div>
+    <Footer/>
     </>
   );
 };

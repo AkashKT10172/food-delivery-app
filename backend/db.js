@@ -13,7 +13,7 @@ const connectToMongo = async () => {
         const foodData = await food_category.find({}).toArray();
         global.food_items = data;
         global.foodCategory = foodData;
-        // console.log(foodData)
+        console.log(data)
     }
     catch(error) {
         console.log(error)

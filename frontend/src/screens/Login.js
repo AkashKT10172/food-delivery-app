@@ -1,6 +1,9 @@
 import React from 'react'
 import {useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
+
 const Login = () => {
   let navigate = useNavigate();
   const [credentials, setCredentials] = useState({
@@ -27,6 +30,7 @@ const handleSubmit = async (e) => {
         alert("EnterValid Credentials")
     } else {
       localStorage.setItem("authToken", json.authToken)
+      localStorage.setItem("userEmail", credentials.email)
       navigate("/")
     }
 }
@@ -37,6 +41,8 @@ const onchange = (event) => {
 }
 console.log(credentials)
   return (
+    <>
+    <Navbar/>
     <div className="container">
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -75,6 +81,9 @@ console.log(credentials)
         <Link to="/createuser" className="m-3 btn btn-danger">I'm a new User</Link>
       </form>
     </div>
+    <Footer/>
+    </>
+    
   )
 }
 
