@@ -10,6 +10,7 @@ app.use(
     origin: ["http://localhost:3000", "https://biteblissfoods.vercel.app/"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
+    credentials : true
   })
 );
 
