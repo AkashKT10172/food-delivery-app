@@ -6,9 +6,14 @@ const connectToMongo = require("./db")
 connectToMongo()
 
 app.use(cors({
-  origin: ["https://biteblissfoods.vercel.app", "http://localhost:3000/"]
+  origin: "https://biteblissfoods.vercel.app"
 }
 ))
+app.use(cors({
+  origin: "http://localhost:3000/"
+}
+))
+
 app.options('*', cors())
 
 app.use(express.urlencoded({ extended: false }));
