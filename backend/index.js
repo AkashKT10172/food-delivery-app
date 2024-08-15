@@ -14,6 +14,8 @@ app.use(
 );
 
 app.options("*", cors());
+app.use(express.urlencoded({ extended: false }));
+
 
 app.get('/', (req, res) => {
   res.send('I will be a Microsoft Intern Soon')
