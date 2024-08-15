@@ -12,6 +12,9 @@ app.use(
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
   })
 );
+
+app.options("*", cors());
+
 app.get('/', (req, res) => {
   res.send('I will be a Microsoft Intern Soon')
 })
