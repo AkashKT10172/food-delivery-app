@@ -5,16 +5,24 @@ const cors = require("cors");
 const connectToMongo = require("./db")
 connectToMongo()
 
-app.use(cors({
-  origin: "https://biteblissfoods.vercel.app"
-}
-))
-app.use(cors({
-  origin: "http://localhost:3000/"
-}
-))
+const allowedOrigins = ['http://localhost:3000/', 'https://biteblissfoods.vercel.app'];
 
-app.options('*', cors())
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true); // Allow request
+    } else {
+      callback(new Error('Not allowed by CORS')); // Reject request
+    }
+  },
+  methods: 'GET,POST,PUT,DELETE', // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+};
+
+app.options('*', cors(corsOptions))
 
 app.use(express.urlencoded({ extended: false }));
 
