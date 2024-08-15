@@ -5,16 +5,12 @@ const cors = require("cors");
 const connectToMongo = require("./db")
 connectToMongo()
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://biteblissfoods.vercel.app/"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
-    credentials : true
-  })
-);
+app.use(cors({
+  origin: "https://biteblissfoods.vercel.app"
+}
+))
+app.options('*', cors())
 
-app.options("*", cors());
 app.use(express.urlencoded({ extended: false }));
 
 
