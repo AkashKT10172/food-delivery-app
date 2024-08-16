@@ -36,7 +36,11 @@ const Navbar = () => {
                       <span className="navbar-toggler-icon text-black"><TfiAlignJustify /></span>
                   </button>
                   <div className="collapse navbar-collapse " id="navbarNav">
-                      <ul className="navbar-nav me-auto mb-2">
+                      <ul className="navbar-nav me-auto">
+                      {(localStorage.getItem("authToken")) ? 
+                      <li className="nav-item">
+                            <p className="nav-link active fs-5 text-success">Welcome, {localStorage.getItem("userEmail")}</p>
+                        </li> : "" }
                           <li className="nav-item">
                               <Link className="nav-link active fs-5 text-black" aria-current="page" to="/">
                                   Home
@@ -49,11 +53,13 @@ const Navbar = () => {
                           </li>
                         {
                         (localStorage.getItem("authToken")) ? 
+                        <>
                         <li className="nav-item">
                         <Link className="nav-link active fs-5 text-black" aria-current="page" to="/myorders">
                             My Orders
                         </Link>
-                        </li> : ""
+                        </li>
+                        </> : ""
                         }
                       </ul>
                         {
