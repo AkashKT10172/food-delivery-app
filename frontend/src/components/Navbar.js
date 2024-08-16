@@ -4,6 +4,7 @@ import Badge from 'react-bootstrap/Badge'
 import Modal from '../Modal'
 import Cart from '../screens/Cart';
 import { useCart } from './ContextReducer';
+import { TfiAlignJustify } from "react-icons/tfi";
 const Navbar = () => {
     let data = useCart()
     const [cartView, setCartView] = useState(false)
@@ -18,13 +19,13 @@ const Navbar = () => {
     }
   return (
     <div>
-          <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-              <div className="container-fluid">
-                  <Link className="navbar-brand fs-1 fst-italic pb-2" to="/">
-                      BiteBliss
+          <nav className="navbar navbar-expand-lg navbar-black bg-white shadow-lg">
+              <div className="container-fluid ">
+                  <Link className="navbar-brand fs-1 pb-2 text-black" to="/">
+                      BITEBLISS
                   </Link>
                   <button
-                      className="navbar-toggler"
+                      className="navbar-toggler text-black"
                       type="button"
                       data-bs-toggle="collapse"
                       data-bs-target="#navbarNav"
@@ -32,19 +33,24 @@ const Navbar = () => {
                       aria-expanded="false"
                       aria-label="Toggle navigation"
                   >
-                      <span className="navbar-toggler-icon"></span>
+                      <span className="navbar-toggler-icon text-black"><TfiAlignJustify /></span>
                   </button>
-                  <div className="collapse navbar-collapse" id="navbarNav">
+                  <div className="collapse navbar-collapse " id="navbarNav">
                       <ul className="navbar-nav me-auto mb-2">
                           <li className="nav-item">
-                              <Link className="nav-link active fs-5" aria-current="page" to="/">
+                              <Link className="nav-link active fs-5 text-black" aria-current="page" to="/">
                                   Home
+                              </Link>
+                          </li>
+                          <li>
+                              <Link className="nav-link active fs-5 text-black" aria-current="page" to="/about">
+                                  About Us
                               </Link>
                           </li>
                         {
                         (localStorage.getItem("authToken")) ? 
                         <li className="nav-item">
-                        <Link className="nav-link active fs-5" aria-current="page" to="/myorders">
+                        <Link className="nav-link active fs-5 text-black" aria-current="page" to="/myorders">
                             My Orders
                         </Link>
                         </li> : ""
@@ -53,21 +59,21 @@ const Navbar = () => {
                         {
                             (localStorage.getItem("authToken")) ? 
                             <div className='d-flex'>
-                            <div className="btn bg-white text-success" onClick={loadCart}>
+                            <div className="btn bg-light text-black" onClick={loadCart}>
                                 My Cart&nbsp; 
                                 <Badge pill bg="danger">{data.length}</Badge>
                             </div>
                             {cartView ? <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal> : ""}
-                            <div className="btn bg-white text-danger mx-1" onClick={handleLogout}>
+                            <div className="btn bg-light text-black mx-1" onClick={handleLogout}>
                                 Log-Out
                             </div>
                             </div> 
                             :
                             <div className='d-flex'>
-                            <Link className="btn bg-white text-success" to="/Login">
+                            <Link className="btn bg-light text-black" to="/Login">
                                 Login
                             </Link>
-                            <Link className="btn bg-white text-success mx-1" to="/createuser">
+                            <Link className="btn bg-light text-black mx-1" to="/createuser">
                                 SignUp
                             </Link>
                             </div>

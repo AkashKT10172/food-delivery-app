@@ -43,7 +43,8 @@ console.log(credentials)
   return (
     <>
     <Navbar/>
-    <div className="container">
+    <div className='vh-100'>
+    <div className="container w-50 mt-5">
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
@@ -75,11 +76,12 @@ console.log(credentials)
             onChange={onchange}
           />
         </div>
-        <button type="submit" className="btn btn-success">
+        <button type="submit" className="btn btn-success me-2">
           Submit
         </button>
-        <Link to="/createuser" className="m-3 btn btn-danger">I'm a new User</Link>
+        <Link to="/createuser" className="mt-3 mb-3 btn btn-light">I'm a new User</Link>
       </form>
+    </div>
     </div>
     <Footer/>
     </>

@@ -28,13 +28,13 @@ const Card = (props) => {
   }, [])
   return (
     <div>
-    <div className="card mt-3" style={{"width": "18rem", "maxHeight":"500px"}}>
-    <img className="card-img-top" style={{"width": "18rem", "height":"200px", objectFit: "fill"}} src={props.foodItem.img} alt="Card image cap"/>
+    <div className="card mt-3 m-3 bg-white shadow" style={{"width": "18rem", "maxHeight":"500px"}}>
+    <img className="card-img-top p-2" style={{"width": "18rem", "height":"200px", objectFit: "fill"}} src={props.foodItem.img} alt="Card image cap"/>
       <div className="card-body">
-        <h5 className="card-title">{props.foodItem.name}</h5>
-        <p className="card-text">{props.foodItem.description}</p>
-        <div className='container w-100'>
-            <select className='m-2 h-100 bg-success rounded' onChange={(e) => setQty(e.target.value)}>
+        <h5 className="card-title ms-2 text-black">{props.foodItem.name}</h5>
+        <p className="card-text ms-2 text-black">{props.foodItem.description}</p>
+        <div className=''>
+            <select className='m-2 h-100 bg-light rounded text-black' onChange={(e) => setQty(e.target.value)}>
               {
                 Array.from(Array(9), (e,i) =>{
                   return(
@@ -43,7 +43,7 @@ const Card = (props) => {
                 })
               }
             </select>
-            <select className='m-2 h-100 bg-success rounded' ref = {priceRef} onChange={(e) => setSize(e.target.value)}>
+            <select className='m-2 h-100 bg-light rounded text-black' ref = {priceRef} onChange={(e) => setSize(e.target.value)}>
               {
                 priceOptions.map((data) => {
                   return (
@@ -53,12 +53,12 @@ const Card = (props) => {
               }
             </select>
 
-            <div className='d-inline h-100 fs-5'>
+            <div className='d-inline h-100 fs-5 text-black'>
                 Rs. {finalPrice}
             </div>
             
-            <hr/>
-              <button className='btn btn-success justify-center ms-2' 
+            <hr className="text-black"/>
+              <button className='btn bg-success justify-center ms-2 text-black' 
                   onClick={handleAddToCart}>Add to Cart</button>
         </div>
       </div>
