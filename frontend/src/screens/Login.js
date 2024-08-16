@@ -43,43 +43,40 @@ console.log(credentials)
   return (
     <>
     <Navbar/>
-    <div className='vh-100'>
-    <div className="container w-50 mt-5">
+    <div className='vh-100 d-flex jusitfy-content-center' style={{background : "#fed8b1"}}>
+    <div className="container col-sm-8 col-md-6 pt-3 pb-5 ps-2 pe-2 rounded">
+      <h3 className='text-center mb-2 text-black'>Login to your account</h3>
+      <p className='text-center text-black'>Don't have an account yet? <Link to = '/createuser'>Sign Up</Link></p>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
           <input
             type="email"
-            className="form-control"
+            placeholder='E-mail Address'
+            className="form-control text-black bg-white"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             name='email'
             value={credentials.email}
             onChange={onchange}
           />
-          <div id="emailHelp" className="form-text">
+          <div id="emailHelp" className="form-text ms-1 text-black">
             We'll never share your email with anyone else.
           </div>
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-          </label>
           <input
             type="password"
-            className="form-control"
+            className="form-control text-black bg-white"
             id="exampleInputPassword1"
+            placeholder='Password'
             name='password'
             value={credentials.password}
             onChange={onchange}
           />
         </div>
-        <button type="submit" className="btn btn-success me-2">
+        <button type="submit" className="btn btn-success me-2 w-100 text-black">
           Submit
         </button>
-        <Link to="/createuser" className="mt-3 mb-3 btn btn-light">I'm a new User</Link>
       </form>
     </div>
     </div>

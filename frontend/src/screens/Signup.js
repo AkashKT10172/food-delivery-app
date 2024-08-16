@@ -34,6 +34,8 @@ const Signup = () => {
         if(!json.success) {
             alert("EnterValid Credentials")
         } else {
+          localStorage.setItem("authToken", json.authToken)
+          localStorage.setItem("userEmail", credentials.email)
           Navigate("/")
         }
     }
@@ -46,42 +48,41 @@ const Signup = () => {
   return (
     <>
     <Navbar/>
-    <div className="container">
+    <div className='vh-100 d-flex jusitfy-content-center' style={{background : "#fed8b1"}}>
+    <div className="container col-sm-8 col-md-6 pt-3 pb-5 ps-2 pe-2">
+    <h3 className='text-center mb-2 text-black'>Create a new account</h3>
+    <p className='text-center text-black'>Already have an account? <Link to = '/login'>Log In</Link></p>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
+        <div className="mb-3 mt-3">
           <input
             type="text"
-            className="form-control"
+            placeholder="Name"
+            className="form-control text-black bg-white"
             name='name'
             value={credentials.name}
             onChange={onchange}
           />
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
+        </div>
+        <div>
           <input
             type="email"
-            className="form-control"
+            placeholder="E-mail Address"
+            className="form-control text-black bg-white"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             name='email'
             value={credentials.email}
             onChange={onchange}
           />
-          <div id="emailHelp" className="form-text">
+          <div id="emailHelp" className="form-text ms-1 mb-2 text-black">
             We'll never share your email with anyone else.
           </div>
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-          </label>
           <input
             type="password"
-            className="form-control"
+            placeholder="Password"
+            className="form-control text-black bg-white"
             id="exampleInputPassword1"
             name='password'
             value={credentials.password}
@@ -89,12 +90,10 @@ const Signup = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="location" className="form-label">
-            Address
-          </label>
           <input
             type="text"
-            className="form-control"
+            placeholder="Address"
+            className="form-control text-black bg-white"
             id="exampleInputLocation1"
             name='geoLocation'
             value={credentials.geoLocation}
@@ -102,11 +101,11 @@ const Signup = () => {
           />
         </div>
         
-        <button type="submit" className="btn btn-success">
+        <button type="submit" className="btn btn-success w-100">
           Submit
         </button>
-        <Link to="/login" className="m-3 btn btn-danger">Already a User</Link>
       </form>
+    </div>
     </div>
     <Footer/>
     </>

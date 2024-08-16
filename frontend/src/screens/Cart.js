@@ -39,7 +39,7 @@ export default function Cart() {
       <div className='container m-auto table-responsive table-responsive-sm table-responsive-md' >
         <div className="row">
           {data.map((food, index) => (
-            <div key={index} className="col-md-4 mb-4">
+            <div key={index} className="col-sm-3 mb-4">
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">{food.name}</h5>
@@ -61,7 +61,7 @@ export default function Cart() {
 
         <div><h1 className='fs-2'>Total Price: ₹{totalPrice}/-</h1></div>
         <div>
-          <button className='btn bg-danger mt-5 mb-2' onClick={handleCheckOut}> Proceed to Payment </button>
+          <button className='btn bg-danger mt-5 mb-2' onClick={handleCheckOut}> Check Out </button>
         </div>
       </div>
     </div>

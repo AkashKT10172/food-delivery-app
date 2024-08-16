@@ -24,7 +24,10 @@ async (req, res) => {
             email : req.body.email,
             location : req.body.location,    
         })
-        res.json({success:true})
+        
+        const authToken = jwt.sign(secPassword, jwtSecret);
+        res.json({success:true, authToken:authToken})
+
     } catch (error) {
         console.log(error)
         res.json({success:false})
@@ -54,6 +57,7 @@ router.post("/loginuser",
                     id : userData.id
                 }
             }
+
             const authToken = jwt.sign(data, jwtSecret);
             return res.json({success:true, authToken:authToken})
 

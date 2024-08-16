@@ -47,7 +47,7 @@ const Home = () => {
           foodCat.map((data) => {
             return (
               <div className="row mb-3">
-                <div key={data._id} className="fs-3 m-3 text-center text-black">
+                <div key={data._id} className="fs-3 mb-3 mt-3 text-center text-black">
                   {data.CategoryName}
                 </div>
                 <hr className="text-dark"/>
