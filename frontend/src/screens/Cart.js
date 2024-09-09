@@ -34,13 +34,13 @@ export default function Cart() {
     let totalPrice = data.reduce((total, food) => total + food.price, 0)
   return (
     <div>
-      <div className="container justify-content-center"><h2 className='mt-2'>My Cart</h2></div>
+      <div className="container justify-content-center"><h2 className='mt-2 text-black'>My Cart</h2></div>
       {console.log(data)}
       <div className='container m-auto table-responsive table-responsive-sm table-responsive-md' >
         <div className="row">
           {data.map((food, index) => (
             <div key={index} className="col-sm-3 mb-4">
-              <div className="card">
+              <div className="card bg-white text-black">
                 <div className="card-body">
                   <h5 className="card-title">{food.name}</h5>
                   <img
@@ -52,14 +52,14 @@ export default function Cart() {
                   <p className="card-text">Quantity: {food.qty}</p>
                   <p className="card-text">Option: {food.size}</p>
                   <p className="card-text">Amount: ₹{food.price}/-</p>
-                  <button type="button" className="btn p-0" onClick={() => { dispatch({ type: "REMOVE", index: index }) }}><FaTrashAlt /></button>
+                  <button type="button" className="btn p-0 text-danger" onClick={() => { dispatch({ type: "REMOVE", index: index }) }}><FaTrashAlt /></button>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div><h1 className='fs-2'>Total Price: ₹{totalPrice}/-</h1></div>
+        <div><h1 className='fs-2 text-black'>Total Price: ₹{totalPrice}/-</h1></div>
         <div>
           <button className='btn bg-danger mt-5 mb-2' onClick={handleCheckOut}> Check Out </button>
         </div>
