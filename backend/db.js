@@ -1,5 +1,11 @@
 const mongoose = require('mongoose')
-const mongourl = 'mongodb+srv://Bite_Bliss:1234akash@cluster0.zscffay.mongodb.net/Bite_Bliss?retryWrites=true&w=majority&appName=Cluster0'
+const dotenv = require('dotenv');
+
+// Load environment variables from the .env file
+dotenv.config();
+
+const mongourl = process.env.MONGO_URL;
+
 const connectToMongo = async () => {
     try {
         mongoose.set('strictQuery', false)
