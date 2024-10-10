@@ -28,7 +28,7 @@ const Home = () => {
   }, []);
   //console.log(foodCat.length);
   return (
-    <div style={{background : "#fed8b1"}}>
+    <div style={{ background: "#fed8b1" }}>
       <Navbar />
       <div className="d-flex justify-content-center">
         <input
@@ -47,37 +47,58 @@ const Home = () => {
           foodCat.map((data) => {
             return (
               <div className="row mb-3">
-                <div key={data._id} className="fs-3 mb-3 mt-3 text-center text-black">
+                <div
+                  key={data._id}
+                  className="fs-3 mb-3 mt-3 text-center text-black"
+                >
                   {data.CategoryName}
                 </div>
-                <hr className="text-dark"/>
+                <hr className="text-dark" />
                 <div className="d-flex flex-row flex-wrap justify-content-center justify-content-sm-start">
-                {foodItem.length > 0 ? (
-                  foodItem
-                    .filter(
-                      (item) =>
-                        item.CategoryName === data.CategoryName &&
-                        item.name.toLowerCase().includes(search.toLowerCase())
-                    )
-                    .map((filterItems) => {
-                      return (
-                        
+                  {foodItem.length > 0 ? (
+                    foodItem
+                      .filter(
+                        (item) =>
+                          item.CategoryName === data.CategoryName &&
+                          item.name.toLowerCase().includes(search.toLowerCase())
+                      )
+                      .map((filterItems) => {
+                        return (
                           <Card
                             foodItem={filterItems}
                             options={filterItems.options[0]}
                           />
-                        
-                      );
-                    })
-                ) : (
-                  <div> No Data Found! </div>
-                )}
+                        );
+                      })
+                  ) : (
+                    <div className="vh-100 text-dark d-flex justify-content-center">
+                      <div>
+                      Sorry if you are encountering this error. I have hosted
+                      the backend on a free server which runs slow. <br />
+                      You can wait for a while, if it loads, else, check out the
+                      Github&nbsp;
+                      <a href="https://github.com/AkashKT10172/food-delivery-app">
+                        Link
+                      </a>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             );
           })
         ) : (
-          <div> nothing to display </div>
+          <div className="vh-100 text-dark d-flex justify-content-center">
+                      <div>
+                      Sorry if you are encountering this error. I have hosted
+                      the backend on a free server which runs slow. <br />
+                      You can wait for a while, if it loads, else, check out the
+                      Github&nbsp;
+                      <a href="https://github.com/AkashKT10172/food-delivery-app">
+                        Link
+                      </a>
+                      </div>
+                    </div>
         )}
       </div>
       <Footer />
