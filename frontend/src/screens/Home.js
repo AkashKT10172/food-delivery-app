@@ -51,7 +51,7 @@ const Home = () => {
                   {data.CategoryName}
                 </div>
                 <hr className="text-dark"/>
-                <div className="d-flex flex-row flex-wrap justify-content-center">
+                <div className="d-flex flex-row flex-wrap justify-content-center justify-content-sm-start">
                 {foodItem.length > 0 ? (
                   foodItem
                     .filter(
