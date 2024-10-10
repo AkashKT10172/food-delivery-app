@@ -7,7 +7,7 @@ export default function Cart() {
   if (data.length === 0) {
     return (
       <div>
-        <div className='mt-5 w-100 d-flex justify-content-center fs-3'>The Cart is Empty!</div>
+        <div className='mt-5 w-100 d-flex justify-content-center fs-3 text-black'>The Cart is Empty!</div>
       </div>
     )
   }
@@ -52,7 +52,7 @@ export default function Cart() {
                   <p className="card-text">Quantity: {food.qty}</p>
                   <p className="card-text">Option: {food.size}</p>
                   <p className="card-text">Amount: ₹{food.price}/-</p>
-                  <button type="button" className="btn p-0 text-warning" onClick={() => { dispatch({ type: "REMOVE", index: index }) }}><FaTrashAlt /></button>
+                  <button type="button" className="btn p-0 text-danger" onClick={() => { dispatch({ type: "REMOVE", index: index }) }}><FaTrashAlt /></button>
                 </div>
               </div>
             </div>

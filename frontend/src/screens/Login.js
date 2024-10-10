@@ -7,8 +7,8 @@ import Navbar from '../components/Navbar'
 const Login = () => {
   let navigate = useNavigate();
   const [credentials, setCredentials] = useState({
-    email:"",
-    password:"",
+    email:"guest@gmail.com",
+    password:"12345678",
 });
 const handleSubmit = async (e) => {
     e.preventDefault()

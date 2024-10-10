@@ -26,13 +26,13 @@ export default function MyOrder() {
     }, [])
 
     return (
-        <div>
+        <div style={{background : "#fed8b1"}}>
             <div>
                 <Navbar />
             </div>
 
-            <div className='container'>
-                <div className='row'>
+            <div className='container text-black'>
+                <div className='row mb-4'>
 
                     {orderData !== '' ? Array(orderData).map(data => {
                         return (
@@ -45,11 +45,11 @@ export default function MyOrder() {
                                                     {arrayData.Order_date ? <div className='m-auto mt-5'>
 
                                                         {data = arrayData.Order_date}
-                                                        <hr />
+                                                        <hr className='text-black' />
                                                     </div> :
 
                                                         <div className='col-12 col-md-6 col-lg-3' >
-                                                            <div className="card mt-3" style={{ width: "16rem", maxHeight: "360px" }}>
+                                                            <div className="card mt-3 bg-white p-2" style={{ width: "16rem", maxHeight: "360px" }}>
                                                                 <img src={arrayData.img} className="card-img-top" alt="..." style={{ height: "80px", objectFit: "fill" }} />
                                                                 <div className="card-body">
                                                                     <h5 className="card-title">{arrayData.name}, {arrayData.qty}, {arrayData.size}</h5>
